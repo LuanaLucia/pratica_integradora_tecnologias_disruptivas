@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -19,6 +20,11 @@ import CriarTarefa from './CriarTarefa';
 import EditarTarefa from './EditarTarefa';
 
 //A função abaixo é usada para criar o array contendo os dados iniciais da listagem de tarefas.
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
 function createData(
   idTarefa: number,
   tituloTarefa: string,
@@ -82,7 +88,7 @@ const ListarTarefa = () => {
   };
 
     return(
-    <>
+      <ThemeProvider theme={darkTheme}>
     <Card>
         <CardHeader
           title="Tarefas"
@@ -162,7 +168,7 @@ const ListarTarefa = () => {
         </div>
       </Modal>  
     </div>
-  </>    
+    </ThemeProvider>  
  );
 };
  
